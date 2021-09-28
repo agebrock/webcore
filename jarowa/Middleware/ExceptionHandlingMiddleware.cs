@@ -2,10 +2,10 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 /*
  * Simple middleware to convert a catch a thrown exception and convert it into a string.
- * 
+ * https://docs.microsoft.com/de-de/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
  */
 
 namespace jarowa.Middleware
@@ -30,11 +30,15 @@ namespace jarowa.Middleware
         }
         private static Task HandleException(HttpContext context, Exception ex)
         {
-            //set the statuscode for our client ..
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.ContentType = "application/json";
+
+            var errorMessage = JsonConvert.SerializeObject(new { Message = ex.Message, Code = context.Response.StatusCode.ToString() });
+
+      
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            //in the real world we could do some fancy json response here
-            return context.Response.WriteAsync(ex.Message);
+            return context.Response.WriteAsync(errorMessage);
         }
     }
 }
