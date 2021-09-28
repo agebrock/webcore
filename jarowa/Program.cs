@@ -1,3 +1,4 @@
+using jarowa.Middleware;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,5 +25,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
 app.Run();
