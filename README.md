@@ -1,4 +1,4 @@
-#  Web core api - Frist steps 
+#  Web core api - First steps 
 ### Just a simple testproject using C# - ?Magic ?
 
 ## Features
