@@ -34,7 +34,7 @@ namespace jarowa
 
         public string RemoveWhitespaces(string phoneNumber)
         {
-            return phoneNumber.Replace(" ", "");
+            return Regex.Replace(phoneNumber, @"\s", "");
         }
 
 
