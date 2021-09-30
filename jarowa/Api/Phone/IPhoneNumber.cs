@@ -1,4 +1,4 @@
-﻿namespace jarowa
+﻿namespace jarowa.Api.Phone
 {
     public interface IPhoneNumber
     {

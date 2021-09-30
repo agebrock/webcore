@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace jarowa
+namespace jarowa.Api.Phone
 {
     public class PhoneNumber : IPhoneNumber
     {
